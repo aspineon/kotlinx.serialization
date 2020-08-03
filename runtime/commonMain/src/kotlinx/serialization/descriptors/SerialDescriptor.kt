@@ -130,6 +130,7 @@ public interface SerialDescriptor {
      * Custom serializers should provide a unique serial name that identify both the serializable class and
      * the serializer itself, ignoring type arguments, if they are present.
      */
+    @ExperimentalSerializationApi
     public val serialName: String
 
     /**
@@ -142,12 +143,14 @@ public interface SerialDescriptor {
      * Kind should be consistent with the implementation, for example, if it is a [primitive][PrimitiveKind],
      * then its elements count should be zero and vice versa.
      */
+    @ExperimentalSerializationApi
     public val kind: SerialKind
 
     /**
      * Whether the descriptor describes nullable element.
      * Returns `true` if associated serializer can serialize/deserialize nullable elements of the described type.
      */
+    @ExperimentalSerializationApi
     public val isNullable: Boolean get() = false
 
     /**
@@ -161,6 +164,7 @@ public interface SerialDescriptor {
      * the corresponding descriptor has a single element (`IntDescriptor`, the type of list element),
      * but from zero up to `Int.MAX_VALUE` values in the serialized form.
      */
+    @ExperimentalSerializationApi
     public val elementsCount: Int
 
     /**
@@ -168,6 +172,7 @@ public interface SerialDescriptor {
      * Serial annotations can be used to specify an additional metadata that may be used during serialization.
      * Only annotations marked with [SerialInfo] are added to the resulting list.
      */
+    @ExperimentalSerializationApi
     public val annotations: List<Annotation> get() = emptyList()
 
     /**
@@ -178,6 +183,7 @@ public interface SerialDescriptor {
      * @throws IndexOutOfBoundsException for an illegal [index] values.
      * @throws IllegalStateException if the current descriptor does not support children elements (e.g. is a primitive)
      */
+    @ExperimentalSerializationApi
     public fun getElementName(index: Int): String
 
     /**
@@ -185,6 +191,7 @@ public interface SerialDescriptor {
      * if there is no such element.
      * The resulting index, if it is not [CompositeDecoder.UNKNOWN_NAME], is guaranteed to be usable with [getElementName].
      */
+    @ExperimentalSerializationApi
     public fun getElementIndex(name: String): Int
 
     /**
@@ -207,6 +214,7 @@ public interface SerialDescriptor {
      * @throws IndexOutOfBoundsException for an illegal [index] values.
      * @throws IllegalStateException if the current descriptor does not support children elements (e.g. is a primitive).
      */
+    @ExperimentalSerializationApi
     public fun getElementAnnotations(index: Int): List<Annotation>
 
     /**
@@ -219,6 +227,7 @@ public interface SerialDescriptor {
      * @throws IndexOutOfBoundsException for illegal [index] values.
      * @throws IllegalStateException if the current descriptor does not support children elements (e.g. is a primitive).
      */
+    @ExperimentalSerializationApi
     public fun getElementDescriptor(index: Int): SerialDescriptor
 
     /**
@@ -243,12 +252,14 @@ public interface SerialDescriptor {
      * @throws IndexOutOfBoundsException for an illegal [index] values.
      * @throws IllegalStateException if the current descriptor does not support children elements (e.g. is a primitive).
      */
+    @ExperimentalSerializationApi
     public fun isElementOptional(index: Int): Boolean
 }
 
 /**
  * Returns an iterable of all descriptor [elements][SerialDescriptor.getElementDescriptor].
  */
+@ExperimentalSerializationApi
 public val SerialDescriptor.elementDescriptors: Iterable<SerialDescriptor>
     get() = Iterable {
         object : Iterator<SerialDescriptor> {
@@ -264,6 +275,7 @@ public val SerialDescriptor.elementDescriptors: Iterable<SerialDescriptor>
 /**
  * Returns an iterable of all descriptor [element names][SerialDescriptor.getElementName].
  */
+@ExperimentalSerializationApi
 public val SerialDescriptor.elementNames: Iterable<String>
     get() = Iterable {
         object : Iterator<String> {

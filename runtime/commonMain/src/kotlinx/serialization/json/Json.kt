@@ -184,8 +184,8 @@ public class JsonBuilder internal constructor(conf: JsonConf) {
 
     /**
      * Specifies indent string to use with [prettyPrint] mode.
-     * TODO specify whitespaces
      */
+    @ExperimentalSerializationApi
     public var prettyPrintIndent: String = conf.prettyPrintIndent
 
     /**
@@ -240,6 +240,7 @@ public class JsonBuilder internal constructor(conf: JsonConf) {
         )
     }
 
+    // TODO constant
     private companion object {
         @JvmStatic
         private val defaultIndent = "    "

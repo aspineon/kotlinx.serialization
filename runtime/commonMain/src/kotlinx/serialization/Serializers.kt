@@ -22,6 +22,12 @@ public inline fun <reified T> serializer(): KSerializer<T> {
     return serializer(typeOf<T>()).cast()
 }
 
+/*
+ * TODO discuss intrinsics for, e.g.
+ * module.serializer<List<Int>>() and
+ * module.serializer<List<@Contextual Int>>()
+ */
+
 /**
  * Retrieves serializer for the given type [T] from the current [SerializersModule] and,
  * if not found, fallbacks to plain [serializer] method.

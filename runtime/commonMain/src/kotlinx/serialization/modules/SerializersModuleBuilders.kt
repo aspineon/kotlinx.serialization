@@ -30,7 +30,7 @@ public inline fun <reified T : Any> serializersModuleOf(serializer: KSerializer<
  * it is possible to copy whole another module to this builder with [SerializersModule.dumpTo]
  */
 @Suppress("FunctionName")
-public fun SerializersModule(builderAction: SerializersModuleBuilder.() -> Unit): SerializersModule {
+public inline fun SerializersModule(builderAction: SerializersModuleBuilder.() -> Unit): SerializersModule {
     val builder = SerializersModuleBuilder()
     builder.builderAction()
     return builder.build()
@@ -189,7 +189,7 @@ public inline fun <reified T : Any> SerializersModuleBuilder.contextual(serializ
  *
  * @see PolymorphicSerializer
  */
-public fun <Base : Any> SerializersModuleBuilder.polymorphic(
+public inline fun <Base : Any> SerializersModuleBuilder.polymorphic(
     baseClass: KClass<Base>,
     baseSerializer: KSerializer<Base>? = null,
     builderAction: PolymorphicModuleBuilder<Base>.() -> Unit = {}

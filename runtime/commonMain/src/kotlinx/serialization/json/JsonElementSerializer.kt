@@ -23,6 +23,7 @@ import kotlinx.serialization.internal.*
  * assertEquals(JsonObject(mapOf("key" to JsonLiteral(1.0))), literal)
  * ```
  */
+// TODO internal published API
 @Serializer(forClass = JsonElement::class)
 public object JsonElementSerializer : KSerializer<JsonElement> {
     override val descriptor: SerialDescriptor =

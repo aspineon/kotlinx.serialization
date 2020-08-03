@@ -20,6 +20,7 @@ import kotlinx.serialization.modules.*
  * Typically, formats have their specific [Encoder] and [Decoder] implementations
  * as private classes and do not expose them.
  */
+@ExperimentalSerializationApi
 public interface SerialFormat {
     /**
      * Contains all serializers registered by format user for [Contextual] and [Polymorphic] serialization.
@@ -32,6 +33,7 @@ public interface SerialFormat {
 /**
  * [SerialFormat] that allows conversions to and from [ByteArray] via [encodeToByteArray] and [decodeFromByteArray] methods.
  */
+@ExperimentalSerializationApi
 public interface BinaryFormat : SerialFormat {
 
     /**
@@ -48,6 +50,7 @@ public interface BinaryFormat : SerialFormat {
 /**
  * [SerialFormat] that allows conversions to and from [String] via [encodeToString] and [decodeFromString] methods.
  */
+@ExperimentalSerializationApi
 public interface StringFormat : SerialFormat {
 
     /**
@@ -64,6 +67,7 @@ public interface StringFormat : SerialFormat {
 /**
  * Serializes and encodes the given [value] to string using serializer retrieved from the reified type parameter.
  */
+@OptIn(ExperimentalSerializationApi::class)
 public inline fun <reified T> StringFormat.encodeToString(value: T): String =
     encodeToString(serializersModule.serializer(), value)
 

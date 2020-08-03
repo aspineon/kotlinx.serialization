@@ -37,6 +37,7 @@ public class SerializerForNullableTypeTest : JsonTestBase() {
     @Serializable
     data class Box(val s: StringHolder?)
 
+
     @Test
     fun testNullableBoxWithNotNull() {
         val b = Box(StringHolder("box"))

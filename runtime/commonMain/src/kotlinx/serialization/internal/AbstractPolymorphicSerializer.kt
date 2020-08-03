@@ -78,6 +78,7 @@ public abstract class AbstractPolymorphicSerializer<T : Any> internal constructo
      * Lookups an actual serializer for given [klassName] withing the current [base class][baseClass].
      * May use context from the [decoder].
      */
+    @InternalSerializationApi
     public open fun findPolymorphicSerializerOrNull(
         decoder: CompositeDecoder,
         klassName: String?
@@ -88,6 +89,7 @@ public abstract class AbstractPolymorphicSerializer<T : Any> internal constructo
      * Lookups an actual serializer for given [value] within the current [base class][baseClass].
      * May use context from the [encoder].
      */
+    @InternalSerializationApi
     public open fun findPolymorphicSerializerOrNull(
         encoder: Encoder,
         value: T

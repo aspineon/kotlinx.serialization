@@ -22,6 +22,7 @@ import kotlin.contracts.*
  * }
  * ```
  */
+// TODO inline
 public fun buildJsonObject(builderAction: JsonObjectBuilder.() -> Unit): JsonObject {
     contract { callsInPlace(builderAction, InvocationKind.EXACTLY_ONCE) }
     val builder = JsonObjectBuilder()

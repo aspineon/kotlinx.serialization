@@ -13,6 +13,7 @@ import kotlin.reflect.*
  * [SerializersModuleCollector] can introspect and accumulate content of any [SerializersModule] via [SerializersModule.dumpTo],
  * using a visitor-like pattern: [contextual] and [polymorphic] functions are invoked for each registered serializer.
  */
+@ExperimentalSerializationApi // TODO verify callsite of builder
 public interface SerializersModuleCollector {
 
     /**

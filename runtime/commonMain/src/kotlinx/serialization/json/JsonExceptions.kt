@@ -9,6 +9,7 @@ package kotlinx.serialization.json
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.*
 
+// TODO internal
 /**
  * Generic exception indicating a problem with JSON serialization and deserialization.
  */
